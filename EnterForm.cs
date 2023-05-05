@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace CursaBD
 {
     public partial class EnterForm : Form
     {
+        public long enterId;
         public EnterForm()
         {
             InitializeComponent();
@@ -27,7 +29,38 @@ namespace CursaBD
         {
             registr_form registr_Form = new registr_form();
             registr_Form.Show();
-            this.Close();
+            this.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (CorrectEnter())
+            {
+                Main main = new Main(enterId);
+                main.Show();
+                this.Visible= false;
+            }
+            else
+            {
+                MessageBox.Show("Неверно введен логин и пароль, проверьте правильность введенных данных");
+            }
+        }
+
+        public bool CorrectEnter()
+        {
+            using (TestBdContext db = new TestBdContext())
+            {
+                var users = db.Users.ToList();
+                foreach (User u in users)
+                {
+                    if (u.Login.Equals(enter_login_textBox.Text) && u.Password.Equals(enter_password_textBox.Text))
+                    {
+                        enterId = u.UserId;
+                        return true;
+                    }
+                }
+                return false;
+            }
         }
     }
 }

@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EnterForm));
-            textBox1 = new TextBox();
+            enter_login_textBox = new TextBox();
             enter_login = new Label();
             linkLabel1 = new LinkLabel();
             button1 = new Button();
             pictureBox1 = new PictureBox();
-            textBox2 = new TextBox();
+            enter_password_textBox = new TextBox();
             enter_password = new Label();
             label3 = new Label();
             enter_registr_button = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // enter_login_textBox
             // 
-            textBox1.Location = new Point(697, 56);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(194, 23);
-            textBox1.TabIndex = 0;
+            enter_login_textBox.Location = new Point(697, 56);
+            enter_login_textBox.Name = "enter_login_textBox";
+            enter_login_textBox.Size = new Size(194, 23);
+            enter_login_textBox.TabIndex = 0;
             // 
             // enter_login
             // 
@@ -76,6 +76,7 @@
             button1.TabIndex = 3;
             button1.Text = "Вход";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // pictureBox1
             // 
@@ -86,12 +87,12 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // textBox2
+            // enter_password_textBox
             // 
-            textBox2.Location = new Point(697, 119);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(194, 23);
-            textBox2.TabIndex = 5;
+            enter_password_textBox.Location = new Point(697, 119);
+            enter_password_textBox.Name = "enter_password_textBox";
+            enter_password_textBox.Size = new Size(194, 23);
+            enter_password_textBox.TabIndex = 5;
             // 
             // enter_password
             // 
@@ -129,12 +130,12 @@
             Controls.Add(enter_registr_button);
             Controls.Add(label3);
             Controls.Add(enter_password);
-            Controls.Add(textBox2);
+            Controls.Add(enter_password_textBox);
             Controls.Add(pictureBox1);
             Controls.Add(button1);
             Controls.Add(linkLabel1);
             Controls.Add(enter_login);
-            Controls.Add(textBox1);
+            Controls.Add(enter_login_textBox);
             Name = "EnterForm";
             Text = "EnterForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -144,12 +145,12 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox enter_login_textBox;
         private Label enter_login;
         private LinkLabel linkLabel1;
         private Button button1;
         private PictureBox pictureBox1;
-        private TextBox textBox2;
+        private TextBox enter_password_textBox;
         private Label enter_password;
         private Label label3;
         private Button enter_registr_button;

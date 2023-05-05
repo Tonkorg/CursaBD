@@ -57,7 +57,7 @@ namespace CursaBD
                             {
                                 Name = registr_name_textBox.Text,
                                 LastName = registr_lastName_textBox.Text,
-                                PhoneNumber = int.Parse(registr_phoneNumber_textBox.Text),
+                                PhoneNumber = long.Parse(registr_phoneNumber_textBox.Text),
                                 Password = registr_password_textBox.Text,
                                 Login = registr_login_textBox.Text
                             };
@@ -65,15 +65,17 @@ namespace CursaBD
                             db.Users.Add(newUser);
                             db.SaveChanges();
                         }
-                        EnterForm enter = new EnterForm();
+                        
+                    }
+                    EnterForm enter = new EnterForm();
                         enter.Show();
                         this.Close();
-                    }
                 }
 
                 catch (Exception ee)
                 {
-                    MessageBox.Show("ќй что-то пошло не так!");
+                    MessageBox.Show(ee.Message);
+                    Console.WriteLine(ee.Message);
                 }
             }
         }
