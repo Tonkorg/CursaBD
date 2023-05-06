@@ -28,6 +28,7 @@ namespace CursaBD
 
         private void registr_back_button_Click(object sender, EventArgs e)
         {
+            EnterForm enter = new EnterForm();
             this.Close();
 
         }
@@ -64,12 +65,13 @@ namespace CursaBD
 
                             db.Users.Add(newUser);
                             db.SaveChanges();
+                            EnterForm enter = new EnterForm(newUser.Login,newUser.Password);
+                            enter.Show();
+                            this.Close();
                         }
-                        
+                         
                     }
-                    EnterForm enter = new EnterForm();
-                        enter.Show();
-                        this.Close();
+                   
                 }
 
                 catch (Exception ee)

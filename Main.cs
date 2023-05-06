@@ -12,15 +12,18 @@ namespace CursaBD
 {
     public partial class Main : Form
     {
+
+        public long CurrentId;
         public Main()
         {
             InitializeComponent();
         }
         public Main(long id)
-        {   InitializeComponent();
+        {
+            InitializeComponent();
             //this.WindowState = FormWindowState.Maximized;
+            CurrentId = id;
 
-            
             using (TestBdContext db = new TestBdContext())
             {
                 var users = db.Users.ToList();
@@ -33,13 +36,20 @@ namespace CursaBD
                         main_number.Text = u.PhoneNumber.ToString();
                     }
                 }
-                
+
             }
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
 
+        }
+
+        private void Main_edit_button_Click(object sender, EventArgs e)
+        {
+            UserEdit userEdit = new UserEdit(CurrentId);
+            userEdit.Show();
+            this.Visible = false;
         }
     }
 }

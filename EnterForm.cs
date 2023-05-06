@@ -18,6 +18,12 @@ namespace CursaBD
         {
             InitializeComponent();
         }
+        public EnterForm(string login, string password)
+        {
+            InitializeComponent();
+            enter_login_textBox.Text = login;
+            enter_password_textBox.Text = password;
+        }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
