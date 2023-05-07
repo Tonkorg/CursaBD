@@ -207,7 +207,7 @@
             ClientSize = new Size(962, 563);
             Controls.Add(monthCalendar1);
             Controls.Add(tabControl1);
-            //Name = "Base";
+            // Name = "Base";
             Text = "Main";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

@@ -42,6 +42,8 @@ namespace CursaBD
             loadDataGrid();
         }
 
+        List<long> child = new List<long>();
+
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
 
@@ -57,8 +59,12 @@ namespace CursaBD
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = CD.CurrentRow.Index;
+            if (index == null)
+            {
+                index = 0;
+            }
 
-            EditChildren editChildren = new EditChildren(CD.Rows[index].Cells[0].Value.ToString(), CD.Rows[index].Cells[1].Value.ToString(), CD.Rows[index].Cells[2].Value.ToString(), CD.Rows[index].Cells[3].Value.ToString() , CD.Rows[index].Cells[4].Value.ToString());
+            EditChildren editChildren = new EditChildren(CD.Rows[index].Cells[0].Value.ToString(), CD.Rows[index].Cells[1].Value.ToString(), CD.Rows[index].Cells[2].Value.ToString(), CD.Rows[index].Cells[3].Value.ToString(), CD.Rows[index].Cells[4].Value.ToString(), CurrentId, child[index]);
             editChildren.Show();
             this.Close();
         }
@@ -83,11 +89,15 @@ namespace CursaBD
                     {
                         //ChildList.Add(new ChildrenListForDataGrid { Name = ch.Name, Lastname = ch.Lastname, Age = ch.Age, Sens = ch.Sens, Sex = ch.Sex });
                         CD.Rows.Add(ch.Name, ch.Lastname, ch.Sex, ch.Age, ch.Sens);
-                        
+                        child.Add(ch.ChildrenId);
                     }
                 }
 
             }
+        }
+        private void Edit_child_Click(object sender, EventArgs e)
+        {
+            ShowDialog()
         }
     }
 }
