@@ -11,15 +11,15 @@ using System.Windows.Forms;
 
 namespace CursaBD
 {
-    public partial class Main : Form
+    public partial class Base : Form
     {
 
         public long CurrentId;
-        public Main()
+        public Base()
         {
             InitializeComponent();
         }
-        public Main(long id)
+        public Base(long id)
         {
             InitializeComponent();
             //this.WindowState = FormWindowState.Maximized;
@@ -39,7 +39,7 @@ namespace CursaBD
                 }
 
             }
-            //loadDataGrid();
+            loadDataGrid();
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -56,14 +56,11 @@ namespace CursaBD
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            using (TestBdContext db = new TestBdContext())
-            {
-                var users = db.Users.ToList();
-                foreach (User u in users)
-                {
-                    
-                }
-            }
+            int index = CD.CurrentRow.Index;
+
+            EditChildren editChildren = new EditChildren(CD.Rows[index].Cells[0].Value.ToString(), CD.Rows[index].Cells[1].Value.ToString(), CD.Rows[index].Cells[2].Value.ToString(), CD.Rows[index].Cells[3].Value.ToString() , CD.Rows[index].Cells[4].Value.ToString());
+            editChildren.Show();
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -75,17 +72,21 @@ namespace CursaBD
 
         private void loadDataGrid()
         {
-            using(TestBdContext db = new TestBdContext())
+            using (TestBdContext db = new TestBdContext())
             {
                 var user = db.Children.ToList();
 
-                foreach(Child ch in user)
+                //List<ChildrenListForDataGrid> ChildList = new List<ChildrenListForDataGrid>();
+                foreach (Child ch in user)
                 {
-                    if(ch.ParensId == CurrentId)
+                    if (ch.ParensId == CurrentId)
                     {
-                        CD.Rows.Add(ch);
+                        //ChildList.Add(new ChildrenListForDataGrid { Name = ch.Name, Lastname = ch.Lastname, Age = ch.Age, Sens = ch.Sens, Sex = ch.Sex });
+                        CD.Rows.Add(ch.Name, ch.Lastname, ch.Sex, ch.Age, ch.Sens);
+                        
                     }
-                }    
+                }
+
             }
         }
     }

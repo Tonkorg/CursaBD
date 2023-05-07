@@ -31,7 +31,7 @@ namespace CursaBD
 
         private void registr_back_button_Click(object sender, EventArgs e)
         {
-            Main main = new Main(parentsId);
+            Base main = new Base(parentsId);
             main.Show();
             this.Close();
         }
@@ -62,7 +62,7 @@ namespace CursaBD
                     bd.Children.Add(child);
                     bd.SaveChanges();
 
-                    Main main = new Main(parentsId);
+                    Base main = new Base(parentsId);
                     main.Show();
                     this.Close();
                 }

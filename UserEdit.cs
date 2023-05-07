@@ -89,7 +89,7 @@ namespace CursaBD
                             u.PhoneNumber = long.Parse(edit_phoneNumber_textBox.Text);
                             //db.Users.Update(u);
                             db.SaveChanges();
-                            Main enter = new Main(u.UserId);
+                            Base enter = new Base(u.UserId);
                             enter.Show();
                             this.Close();
                         }
@@ -157,7 +157,7 @@ namespace CursaBD
                             u.Password = edit_new_password_textBox.Text;
                             //db.Users.Update(u);
                             db.SaveChanges();
-                            Main enter = new Main(u.UserId);
+                            Base enter = new Base(u.UserId);
                             enter.Show();
                             this.Close();
                         }
@@ -172,7 +172,7 @@ namespace CursaBD
 
         private void registr_back_button_Click(object sender, EventArgs e)
         {
-            Main main = new Main(userId);
+            Base main = new Base(userId);
             main.Show();
             this.Close();
         }

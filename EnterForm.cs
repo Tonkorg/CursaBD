@@ -42,7 +42,7 @@ namespace CursaBD
         {
             if (CorrectEnter())
             {
-                Main main = new Main(enterId);
+                Base main = new Base(enterId);
                 main.Show();
                 this.Visible= false;
             }

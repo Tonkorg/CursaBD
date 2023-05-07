@@ -1,6 +1,6 @@
 ﻿namespace CursaBD
 {
-    partial class Main
+    partial class Base
     {
         /// <summary>
         /// Required designer variable.
@@ -38,18 +38,14 @@
             tabPage2 = new TabPage();
             create_child_button = new Button();
             CD = new DataGridView();
-            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            lastnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            sexDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            Age = new DataGridViewTextBoxColumn();
-            sensDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             childBindingSource = new BindingSource(components);
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            label2 = new Label();
             tabPage3 = new TabPage();
             monthCalendar1 = new MonthCalendar();
+            Name = new DataGridViewTextBoxColumn();
+            LastName = new DataGridViewTextBoxColumn();
+            Age = new DataGridViewTextBoxColumn();
+            Sex = new DataGridViewTextBoxColumn();
+            Sens = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -128,10 +124,6 @@
             // 
             tabPage2.Controls.Add(create_child_button);
             tabPage2.Controls.Add(CD);
-            tabPage2.Controls.Add(textBox4);
-            tabPage2.Controls.Add(textBox3);
-            tabPage2.Controls.Add(textBox2);
-            tabPage2.Controls.Add(label2);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -152,10 +144,8 @@
             // 
             // CD
             // 
-            CD.AutoGenerateColumns = false;
             CD.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            CD.Columns.AddRange(new DataGridViewColumn[] { nameDataGridViewTextBoxColumn, lastnameDataGridViewTextBoxColumn, sexDataGridViewTextBoxColumn, Age, sensDataGridViewTextBoxColumn });
-            CD.DataSource = childBindingSource;
+            CD.Columns.AddRange(new DataGridViewColumn[] { Name, LastName, Age, Sex, Sens });
             CD.Location = new Point(199, 27);
             CD.Name = "CD";
             CD.RowTemplate.Height = 25;
@@ -163,69 +153,9 @@
             CD.TabIndex = 6;
             CD.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // lastnameDataGridViewTextBoxColumn
-            // 
-            lastnameDataGridViewTextBoxColumn.DataPropertyName = "Lastname";
-            lastnameDataGridViewTextBoxColumn.HeaderText = "Lastname";
-            lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
-            // 
-            // sexDataGridViewTextBoxColumn
-            // 
-            sexDataGridViewTextBoxColumn.DataPropertyName = "Sex";
-            sexDataGridViewTextBoxColumn.HeaderText = "Sex";
-            sexDataGridViewTextBoxColumn.Name = "sexDataGridViewTextBoxColumn";
-            // 
-            // Age
-            // 
-            Age.DataPropertyName = "Age";
-            Age.HeaderText = "Age";
-            Age.Name = "Age";
-            // 
-            // sensDataGridViewTextBoxColumn
-            // 
-            sensDataGridViewTextBoxColumn.DataPropertyName = "Sens";
-            sensDataGridViewTextBoxColumn.HeaderText = "Sens";
-            sensDataGridViewTextBoxColumn.Name = "sensDataGridViewTextBoxColumn";
-            // 
             // childBindingSource
             // 
             childBindingSource.DataSource = typeof(Child);
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(29, 252);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 5;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(29, 201);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(29, 137);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(59, 163);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 1;
-            label2.Text = "label2";
             // 
             // tabPage3
             // 
@@ -244,6 +174,32 @@
             monthCalendar1.TabIndex = 4;
             monthCalendar1.DateChanged += monthCalendar1_DateChanged;
             // 
+            // Name
+            // 
+            Name.HeaderText = "Имя";
+            Name.Name = "Name";
+            // 
+            // LastName
+            // 
+            LastName.HeaderText = "Фамилия";
+            LastName.Name = "LastName";
+            // 
+            // Age
+            // 
+            Age.DataPropertyName = "Age";
+            Age.HeaderText = "Возраст";
+            Age.Name = "Age";
+            // 
+            // Sex
+            // 
+            Sex.HeaderText = "Пол";
+            Sex.Name = "Sex";
+            // 
+            // Sens
+            // 
+            Sens.HeaderText = "Аллергия";
+            Sens.Name = "Sens";
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -251,13 +207,12 @@
             ClientSize = new Size(962, 563);
             Controls.Add(monthCalendar1);
             Controls.Add(tabControl1);
-            Name = "Main";
+            //Name = "Base";
             Text = "Main";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)CD).EndInit();
             ((System.ComponentModel.ISupportInitialize)childBindingSource).EndInit();
             ResumeLayout(false);
@@ -286,5 +241,9 @@
         private DataGridViewTextBoxColumn Age;
         private DataGridViewTextBoxColumn sensDataGridViewTextBoxColumn;
         private Button create_child_button;
+        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn LastName;
+        private DataGridViewTextBoxColumn Sex;
+        private DataGridViewTextBoxColumn Sens;
     }
 }
