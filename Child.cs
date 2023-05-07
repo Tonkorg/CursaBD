@@ -13,7 +13,9 @@ public partial class Child
 
     public string Sex { get; set; } = null!;
 
-    public byte[] Age { get; set; } = null!;
+    public int? Age { get; set; } = null!;
 
-    public int? Sens { get; set; }
+    public string Sens { get; set; }
+
+    public long ParensId { get; set; }
 }

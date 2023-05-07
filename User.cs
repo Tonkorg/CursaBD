@@ -19,5 +19,4 @@ public partial class User
 
     public long? UserType { get; set; }
 
-    public long? Child { get; set; }
 }

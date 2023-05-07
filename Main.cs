@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +39,7 @@ namespace CursaBD
                 }
 
             }
+            //loadDataGrid();
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -50,6 +52,41 @@ namespace CursaBD
             UserEdit userEdit = new UserEdit(CurrentId);
             userEdit.Show();
             this.Visible = false;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            using (TestBdContext db = new TestBdContext())
+            {
+                var users = db.Users.ToList();
+                foreach (User u in users)
+                {
+                    
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CreateChild x = new CreateChild(CurrentId);
+            x.Show();
+            this.Close();
+        }
+
+        private void loadDataGrid()
+        {
+            using(TestBdContext db = new TestBdContext())
+            {
+                var user = db.Children.ToList();
+
+                foreach(Child ch in user)
+                {
+                    if(ch.ParensId == CurrentId)
+                    {
+                        CD.Rows.Add(ch);
+                    }
+                }    
+            }
         }
     }
 }

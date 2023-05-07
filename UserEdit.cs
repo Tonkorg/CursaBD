@@ -33,6 +33,7 @@ namespace CursaBD
                     }
                 }
             }
+            userId = id;
 
 
         }
@@ -80,13 +81,13 @@ namespace CursaBD
                 {
                     if (u.UserId == userId)
                     {
-                        
+
                         if (CorrectEditUser())
                         {
                             u.Name = edit_name_textBox.Text;
                             u.LastName = edit_lastName_textBox.Text;
                             u.PhoneNumber = long.Parse(edit_phoneNumber_textBox.Text);
-                            db.Users.Update(u);
+                            //db.Users.Update(u);
                             db.SaveChanges();
                             Main enter = new Main(u.UserId);
                             enter.Show();
@@ -99,7 +100,7 @@ namespace CursaBD
                     }
                 }
             }
-          
+
         }
 
 
@@ -167,6 +168,13 @@ namespace CursaBD
                     }
                 }
             }
+        }
+
+        private void registr_back_button_Click(object sender, EventArgs e)
+        {
+            Main main = new Main(userId);
+            main.Show();
+            this.Close();
         }
     }
 }

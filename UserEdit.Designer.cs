@@ -146,6 +146,7 @@
             registr_back_button.TabIndex = 24;
             registr_back_button.Text = "Назад";
             registr_back_button.UseVisualStyleBackColor = true;
+            registr_back_button.Click += registr_back_button_Click;
             // 
             // registr_clear_button
             // 

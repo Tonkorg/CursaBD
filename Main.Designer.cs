@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             Main_edit_button = new Button();
@@ -35,17 +36,25 @@
             main_LastName = new Label();
             Main_name = new Label();
             tabPage2 = new TabPage();
+            create_child_button = new Button();
+            CD = new DataGridView();
+            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            lastnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            sexDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            Age = new DataGridViewTextBoxColumn();
+            sensDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            childBindingSource = new BindingSource(components);
+            textBox4 = new TextBox();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
             label2 = new Label();
-            label1 = new Label();
             tabPage3 = new TabPage();
             monthCalendar1 = new MonthCalendar();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)CD).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)childBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -117,12 +126,12 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(create_child_button);
+            tabPage2.Controls.Add(CD);
             tabPage2.Controls.Add(textBox4);
             tabPage2.Controls.Add(textBox3);
             tabPage2.Controls.Add(textBox2);
-            tabPage2.Controls.Add(textBox1);
             tabPage2.Controls.Add(label2);
-            tabPage2.Controls.Add(label1);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -131,23 +140,92 @@
             tabPage2.Text = "Информация о детях";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // create_child_button
+            // 
+            create_child_button.Location = new Point(532, 372);
+            create_child_button.Name = "create_child_button";
+            create_child_button.Size = new Size(165, 23);
+            create_child_button.TabIndex = 7;
+            create_child_button.Text = "Добавить ребенка";
+            create_child_button.UseVisualStyleBackColor = true;
+            create_child_button.Click += button1_Click;
+            // 
+            // CD
+            // 
+            CD.AutoGenerateColumns = false;
+            CD.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            CD.Columns.AddRange(new DataGridViewColumn[] { nameDataGridViewTextBoxColumn, lastnameDataGridViewTextBoxColumn, sexDataGridViewTextBoxColumn, Age, sensDataGridViewTextBoxColumn });
+            CD.DataSource = childBindingSource;
+            CD.Location = new Point(199, 27);
+            CD.Name = "CD";
+            CD.RowTemplate.Height = 25;
+            CD.Size = new Size(542, 298);
+            CD.TabIndex = 6;
+            CD.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // lastnameDataGridViewTextBoxColumn
+            // 
+            lastnameDataGridViewTextBoxColumn.DataPropertyName = "Lastname";
+            lastnameDataGridViewTextBoxColumn.HeaderText = "Lastname";
+            lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
+            // 
+            // sexDataGridViewTextBoxColumn
+            // 
+            sexDataGridViewTextBoxColumn.DataPropertyName = "Sex";
+            sexDataGridViewTextBoxColumn.HeaderText = "Sex";
+            sexDataGridViewTextBoxColumn.Name = "sexDataGridViewTextBoxColumn";
+            // 
+            // Age
+            // 
+            Age.DataPropertyName = "Age";
+            Age.HeaderText = "Age";
+            Age.Name = "Age";
+            // 
+            // sensDataGridViewTextBoxColumn
+            // 
+            sensDataGridViewTextBoxColumn.DataPropertyName = "Sens";
+            sensDataGridViewTextBoxColumn.HeaderText = "Sens";
+            sensDataGridViewTextBoxColumn.Name = "sensDataGridViewTextBoxColumn";
+            // 
+            // childBindingSource
+            // 
+            childBindingSource.DataSource = typeof(Child);
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(29, 252);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(100, 23);
+            textBox4.TabIndex = 5;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(29, 201);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(100, 23);
+            textBox3.TabIndex = 4;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(29, 137);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 3;
+            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(61, 30);
+            label2.Location = new Point(59, 163);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 1;
             label2.Text = "label2";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(72, 107);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
             // 
             // tabPage3
             // 
@@ -166,34 +244,6 @@
             monthCalendar1.TabIndex = 4;
             monthCalendar1.DateChanged += monthCalendar1_DateChanged;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(29, 62);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 2;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(29, 137);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 3;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(29, 201);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 4;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(29, 252);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 5;
-            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -208,6 +258,8 @@
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)CD).EndInit();
+            ((System.ComponentModel.ISupportInitialize)childBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -223,10 +275,16 @@
         private MonthCalendar monthCalendar1;
         private Button Main_edit_button;
         private Label label2;
-        private Label label1;
         private TextBox textBox4;
         private TextBox textBox3;
         private TextBox textBox2;
-        private TextBox textBox1;
+        private DataGridView CD;
+        private BindingSource childBindingSource;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn lastnameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn sexDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Age;
+        private DataGridViewTextBoxColumn sensDataGridViewTextBoxColumn;
+        private Button create_child_button;
     }
 }
