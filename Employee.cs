@@ -11,9 +11,9 @@ public partial class Employee
 
     public string LastName { get; set; } = null!;
 
-    public long PhoneNumber { get; set; }
+    public int PhoneNumber { get; set; }
 
-    public long Age { get; set; }
+    public int Age { get; set; }
 
     public string? Exp { get; set; }
 

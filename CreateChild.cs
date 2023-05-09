@@ -29,12 +29,53 @@ namespace CursaBD
 
         }
 
+        public bool isAdmin()
+        {
+            using (TestBdContext bd = new TestBdContext())
+            {
+                var user = bd.Users.ToList();
+
+                foreach (User u in user)
+                {
+                    if (u.UserId == parentsId)
+                    {
+                        if (u.UserType == 1)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return false;
+            }
+        }
+
         private void registr_back_button_Click(object sender, EventArgs e)
         {
+            if(!isAdmin())
+            { 
             Base main = new Base(parentsId);
-            main.Show();
-            this.Close();
+                                main.Show();
+                                this.Close();
+            }
+            else
+            {
+            BaseAdmin main = new BaseAdmin(parentsId);
+                        main.Show();
+                        this.Close();
+            }
         }
+            
+              
+        
+
 
         private void registr_clear_button_Click(object sender, EventArgs e)
         {
@@ -50,21 +91,41 @@ namespace CursaBD
             {
                 if (CorrectInput())
                 {
-                    Child child = new Child
+                    if (!isAdmin())
                     {
-                        Name = child_name_textBox.Text,
-                        Lastname = child_lastName_textBox.Text,
-                        Age = int.Parse(child_Age_textBox.Text),
-                        Sens = child_sens_textBox.Text,
-                        ParensId = parentsId,
-                        Sex = comboBox1.Text
-                    };
-                    bd.Children.Add(child);
-                    bd.SaveChanges();
-
-                    Base main = new Base(parentsId);
-                    main.Show();
-                    this.Close();
+                        Child child = new Child
+                        {
+                            Name = child_name_textBox.Text,
+                            Lastname = child_lastName_textBox.Text,
+                            Age = int.Parse(child_Age_textBox.Text),
+                            Sens = child_sens_textBox.Text,
+                            ParensId = parentsId,
+                            Sex = comboBox1.Text
+                        };
+                        bd.Children.Add(child);
+                        bd.SaveChanges();
+                        Base main = new Base(parentsId);
+                        main.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Child child = new Child
+                        {
+                            Name = child_name_textBox.Text,
+                            Lastname = child_lastName_textBox.Text,
+                            Age = int.Parse(child_Age_textBox.Text),
+                            Sens = child_sens_textBox.Text,
+                            ParensId = 0,
+                            Sex = comboBox1.Text
+                        };
+                        bd.Children.Add(child);
+                        bd.SaveChanges();
+                        BaseAdmin main = new BaseAdmin(parentsId);
+                        main.Show();
+                        this.Close();
+                    }
+                    
                 }
             }
         }
@@ -100,5 +161,6 @@ namespace CursaBD
         }
     }
 }
+
 
 

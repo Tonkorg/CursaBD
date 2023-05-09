@@ -51,7 +51,9 @@ namespace CursaBD
                 }
                 else
                 {
-
+                    BaseAdmin baseAdmin = new BaseAdmin(enterId);
+                    baseAdmin.Show();
+                    this.Visible = false;
                 }
                 
             }

@@ -83,7 +83,7 @@ namespace CursaBD
                             }
                             else { MessageBox.Show("Неверно введены данные"); }
                         }
-                        else { MessageBox.Show("Ops something wromg!"); }
+                      
                     }
                 }
             }

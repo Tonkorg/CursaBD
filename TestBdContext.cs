@@ -40,6 +40,8 @@ public partial class TestBdContext : DbContext
             entity.HasIndex(e => e.ChildrenId, "IX_Children_ChildrenId").IsUnique();
 
             entity.Property(e => e.Age).HasColumnType("NUMERIC");
+
+            entity.Property(e => e.Otr).HasDefaultValueSql("0");
         });
 
         modelBuilder.Entity<Employee>(entity =>

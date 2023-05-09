@@ -39,6 +39,7 @@ namespace CursaBD
             create_emp_Lastname_textBox.Clear();
             create_emp_name_textBox.Clear();
             create_emp_spo_textBox.Clear();
+            create_emp_phoneNumber_textBox.Clear();
         }
 
         private void Create_emp_button_Click(object sender, EventArgs e)

@@ -18,4 +18,6 @@ public partial class Child
     public string Sens { get; set; }
 
     public long ParensId { get; set; }
+
+    public int Otr { get; set; }
 }
