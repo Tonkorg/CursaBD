@@ -36,16 +36,17 @@
             main_LastName = new Label();
             Main_name = new Label();
             tabPage2 = new TabPage();
+            Main_edit_child_button = new Button();
             create_child_button = new Button();
             CD = new DataGridView();
-            childBindingSource = new BindingSource(components);
             tabPage3 = new TabPage();
+            childBindingSource = new BindingSource(components);
             monthCalendar1 = new MonthCalendar();
-            Name = new DataGridViewTextBoxColumn();
-            LastName = new DataGridViewTextBoxColumn();
-            Age = new DataGridViewTextBoxColumn();
-            Sex = new DataGridViewTextBoxColumn();
-            Sens = new DataGridViewTextBoxColumn();
+            NameS = new DataGridViewTextBoxColumn();
+            LastNameS = new DataGridViewTextBoxColumn();
+            AgeS = new DataGridViewTextBoxColumn();
+            SexS = new DataGridViewTextBoxColumn();
+            SensS = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -122,6 +123,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(Main_edit_child_button);
             tabPage2.Controls.Add(create_child_button);
             tabPage2.Controls.Add(CD);
             tabPage2.Location = new Point(4, 24);
@@ -131,6 +133,16 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Информация о детях";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // Main_edit_child_button
+            // 
+            Main_edit_child_button.Location = new Point(359, 372);
+            Main_edit_child_button.Name = "Main_edit_child_button";
+            Main_edit_child_button.Size = new Size(144, 23);
+            Main_edit_child_button.TabIndex = 8;
+            Main_edit_child_button.Text = "Редактировать";
+            Main_edit_child_button.UseVisualStyleBackColor = true;
+            Main_edit_child_button.Click += Edit_child_Click;
             // 
             // create_child_button
             // 
@@ -145,17 +157,13 @@
             // CD
             // 
             CD.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            CD.Columns.AddRange(new DataGridViewColumn[] { Name, LastName, Age, Sex, Sens });
+            CD.Columns.AddRange(new DataGridViewColumn[] { NameS, LastNameS, AgeS, SexS, SensS });
             CD.Location = new Point(199, 27);
             CD.Name = "CD";
             CD.RowTemplate.Height = 25;
             CD.Size = new Size(542, 298);
             CD.TabIndex = 6;
             CD.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // childBindingSource
-            // 
-            childBindingSource.DataSource = typeof(Child);
             // 
             // tabPage3
             // 
@@ -167,6 +175,10 @@
             tabPage3.Text = "Информация о лагере";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // childBindingSource
+            // 
+            childBindingSource.DataSource = typeof(Child);
+            // 
             // monthCalendar1
             // 
             monthCalendar1.Location = new Point(791, 2);
@@ -174,40 +186,45 @@
             monthCalendar1.TabIndex = 4;
             monthCalendar1.DateChanged += monthCalendar1_DateChanged;
             // 
-            // Name
+            // NameS
             // 
-            Name.HeaderText = "Имя";
-            Name.Name = "Name";
+            NameS.HeaderText = "Имя";
+            NameS.Name = "NameS";
+            NameS.ReadOnly = true;
             // 
-            // LastName
+            // LastNameS
             // 
-            LastName.HeaderText = "Фамилия";
-            LastName.Name = "LastName";
+            LastNameS.HeaderText = "Фамилия";
+            LastNameS.Name = "LastNameS";
+            LastNameS.ReadOnly = true;
             // 
-            // Age
+            // AgeS
             // 
-            Age.DataPropertyName = "Age";
-            Age.HeaderText = "Возраст";
-            Age.Name = "Age";
+            AgeS.DataPropertyName = "Age";
+            AgeS.HeaderText = "Возраст";
+            AgeS.Name = "AgeS";
+            AgeS.ReadOnly = true;
             // 
-            // Sex
+            // SexS
             // 
-            Sex.HeaderText = "Пол";
-            Sex.Name = "Sex";
+            SexS.HeaderText = "Пол";
+            SexS.Name = "SexS";
+            SexS.ReadOnly = true;
             // 
-            // Sens
+            // SensS
             // 
-            Sens.HeaderText = "Аллергия";
-            Sens.Name = "Sens";
+            SensS.HeaderText = "Аллергия";
+            SensS.Name = "SensS";
+            SensS.ReadOnly = true;
             // 
-            // Main
+            // Base
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(962, 563);
             Controls.Add(monthCalendar1);
             Controls.Add(tabControl1);
-            // Name = "Base";
+            Name = "Base";
             Text = "Main";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
@@ -238,12 +255,13 @@
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn lastnameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn sexDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Age;
         private DataGridViewTextBoxColumn sensDataGridViewTextBoxColumn;
         private Button create_child_button;
-        private DataGridViewTextBoxColumn Name;
-        private DataGridViewTextBoxColumn LastName;
-        private DataGridViewTextBoxColumn Sex;
-        private DataGridViewTextBoxColumn Sens;
+        private Button Main_edit_child_button;
+        private DataGridViewTextBoxColumn NameS;
+        private DataGridViewTextBoxColumn LastNameS;
+        private DataGridViewTextBoxColumn AgeS;
+        private DataGridViewTextBoxColumn SexS;
+        private DataGridViewTextBoxColumn SensS;
     }
 }

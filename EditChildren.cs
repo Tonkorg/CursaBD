@@ -18,7 +18,7 @@ namespace CursaBD
         {
             InitializeComponent();
         }
-        public EditChildren(string name, string LastName, string age, string sex, string sens, long id,long childId)
+        public EditChildren(string name, string LastName, string sex,string age,  string sens, long id,long childId)
         {
             edit_child_age_textBox.Text = age;
             edit_child_name_textBox.Text = name;

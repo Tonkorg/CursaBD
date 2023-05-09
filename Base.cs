@@ -97,7 +97,16 @@ namespace CursaBD
         }
         private void Edit_child_Click(object sender, EventArgs e)
         {
-            ShowDialog()
+            int index = CD.CurrentRow.Index;
+            if (index == null)
+            {
+                index = 0;
+            }
+
+            Choice choice = new Choice(CD.Rows[index].Cells[0].Value.ToString(), CD.Rows[index].Cells[1].Value.ToString(), CD.Rows[index].Cells[2].Value.ToString(), CD.Rows[index].Cells[3].Value.ToString(), CD.Rows[index].Cells[4].Value.ToString(), CurrentId, child[index]);
+            choice.Show();
+            this.Close();
+
         }
     }
 }
