@@ -14,6 +14,7 @@ namespace CursaBD
     public partial class EnterForm : Form
     {
         public long enterId;
+        bool admin;
         public EnterForm()
         {
             InitializeComponent();
@@ -42,9 +43,17 @@ namespace CursaBD
         {
             if (CorrectEnter())
             {
-                Base main = new Base(enterId);
-                main.Show();
-                this.Visible= false;
+                if (!admin)
+                {
+                    Base main = new Base(enterId);
+                    main.Show();
+                    this.Visible = false;
+                }
+                else
+                {
+
+                }
+                
             }
             else
             {
@@ -62,6 +71,14 @@ namespace CursaBD
                     if (u.Login.Equals(enter_login_textBox.Text) && u.Password.Equals(enter_password_textBox.Text))
                     {
                         enterId = u.UserId;
+                        if(u.UserType == 1)
+                        {
+                            admin = false;
+                        }
+                        else
+                        {
+                            admin = true;
+                        }
                         return true;
                     }
                 }

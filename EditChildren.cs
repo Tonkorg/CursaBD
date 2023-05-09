@@ -18,13 +18,14 @@ namespace CursaBD
         {
             InitializeComponent();
         }
-        public EditChildren(string name, string LastName, string sex,string age,  string sens, long id,long childId)
+        public EditChildren(string name, string LastName, string sex, string age, string sens, long id, long childId)
         {
+            InitializeComponent();
             edit_child_age_textBox.Text = age;
             edit_child_name_textBox.Text = name;
-            edit_child_name_textBox.Text = LastName;
+            edit_child_lastName_textBox.Text = LastName;
             edit_child_sens_textBox.Text = sens;
-            InitializeComponent();
+
             currentPArentsId = id;
             currentId = childId;
         }
@@ -36,15 +37,7 @@ namespace CursaBD
             this.Close();
         }
 
-        private void edit_child_lastName_textBox_TextChanged(object sender, EventArgs e)
-        {
-            edit_child_name_textBox.Clear();
-        }
 
-        private void edit_child_name_textBox_TextChanged(object sender, EventArgs e)
-        {
-            edit_child_lastName_textBox.Clear();
-        }
 
         private void edit_child_age_textBox_TextChanged(object sender, EventArgs e)
         {
@@ -66,50 +59,64 @@ namespace CursaBD
 
         private void registr_regist_button_Click(object sender, EventArgs e)
         {
-            using (TestBdContext db = new TestBdContext())
+            try
             {
-                var child = db.Children.ToList();
-
-
-                foreach(Child ch in child)
+                using (TestBdContext db = new TestBdContext())
                 {
-                    if(ch.ChildrenId == currentId)
-                    {
-                       if(CorrectInput())
-                        {
-                            ch.Name = edit_child_name_textBox.Text;
-                            ch.Lastname = edit_child_lastName_textBox.Text;
-                            ch.Age = int.Parse(edit_child_age_textBox.Text);
-                            ch.Sens = edit_child_sens_textBox.Text;
+                    var child = db.Children.ToList();
 
-                            db.SaveChanges();
-                            Base main = new Base(currentPArentsId);
-                            main.Show();
-                            this.Close();
+                    foreach (Child ch in child)
+                    {
+                        if (ch.ChildrenId == currentId)
+                        {
+                            if (CorrectInput())
+                            {
+                                ch.Name = edit_child_name_textBox.Text;
+                                ch.Lastname = edit_child_lastName_textBox.Text;
+                                ch.Age = int.Parse(edit_child_age_textBox.Text);
+                                ch.Sens = edit_child_sens_textBox.Text;
+                                db.Children.Update(ch);
+                                db.SaveChanges();
+                                Base main = new Base(currentPArentsId);
+                                main.Show();
+                                this.Close();
+                            }
+                            else { MessageBox.Show("Неверно введены данные"); }
                         }
-                        else { MessageBox.Show("Неверно введены данные"); }
+                        else { MessageBox.Show("Ops something wromg!"); }
                     }
                 }
             }
+            catch (Exception ee) { MessageBox.Show(ee.Message); }
         }
         public bool CorrectInput()
         {
-            if(edit_child_age_textBox.Text == " " || int.Parse(edit_child_age_textBox.Text)>=10 || int.Parse(edit_child_age_textBox.Text) <0)
+            if (edit_child_age_textBox.Text == " " || int.Parse(edit_child_age_textBox.Text) >= 18 || int.Parse(edit_child_age_textBox.Text) < 0)
             {
                 MessageBox.Show("Неверно указан возраст");
                 return false;
             }
-            if(edit_child_lastName_textBox.Text == " ")
+            if (edit_child_lastName_textBox.Text == " ")
             {
                 MessageBox.Show("Неверно указана фамилия");
                 return false;
             }
-            if( edit_child_name_textBox.Text == " ")
+            if (edit_child_name_textBox.Text == " ")
             {
                 MessageBox.Show("Неверно казано имя");
                 return false;
             }
             else { return true; }
+        }
+
+        private void edit_child_lastName_textBox_TextChanged(object sender, EventArgs e)
+        {
+            edit_child_lastName_textBox.Clear();
+        }
+
+        private void edit_child_name_textBox_TextChanged(object sender, EventArgs e)
+        {
+            edit_child_name_textBox.Clear();
         }
     }
 }

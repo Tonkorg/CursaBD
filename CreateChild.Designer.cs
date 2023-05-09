@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label3 = new Label();
+            comboBox1 = new ComboBox();
             registr_regist_button = new Button();
             registr_back_button = new Button();
             registr_clear_button = new Button();
@@ -35,13 +37,29 @@
             label2 = new Label();
             label1 = new Label();
             registr_name = new Label();
-            child_sens_textBox = new TextBox();
             child_Age_textBox = new TextBox();
             child_lastName_textBox = new TextBox();
             child_name_textBox = new TextBox();
-            comboBox1 = new ComboBox();
-            label3 = new Label();
+            child_sens_textBox = new TextBox();
             SuspendLayout();
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(526, 106);
+            label3.Name = "label3";
+            label3.Size = new Size(30, 15);
+            label3.TabIndex = 31;
+            label3.Text = "Пол";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "М", "Ж" });
+            comboBox1.Location = new Point(506, 124);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 30;
             // 
             // registr_regist_button
             // 
@@ -109,13 +127,6 @@
             registr_name.TabIndex = 21;
             registr_name.Text = "Введите Имя";
             // 
-            // child_sens_textBox
-            // 
-            child_sens_textBox.Location = new Point(295, 194);
-            child_sens_textBox.Name = "child_sens_textBox";
-            child_sens_textBox.Size = new Size(210, 23);
-            child_sens_textBox.TabIndex = 19;
-            // 
             // child_Age_textBox
             // 
             child_Age_textBox.Location = new Point(22, 194);
@@ -137,23 +148,12 @@
             child_name_textBox.Size = new Size(210, 23);
             child_name_textBox.TabIndex = 15;
             // 
-            // comboBox1
+            // child_sens_textBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "М", "Ж" });
-            comboBox1.Location = new Point(506, 124);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 30;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(526, 106);
-            label3.Name = "label3";
-            label3.Size = new Size(30, 15);
-            label3.TabIndex = 31;
-            label3.Text = "Пол";
+            child_sens_textBox.Location = new Point(295, 194);
+            child_sens_textBox.Name = "child_sens_textBox";
+            child_sens_textBox.Size = new Size(210, 23);
+            child_sens_textBox.TabIndex = 19;
             // 
             // CreateChild
             // 
@@ -182,6 +182,8 @@
 
         #endregion
 
+        private Label label3;
+        private ComboBox comboBox1;
         private Button registr_regist_button;
         private Button registr_back_button;
         private Button registr_clear_button;
@@ -189,11 +191,9 @@
         private Label label2;
         private Label label1;
         private Label registr_name;
-        private TextBox child_sens_textBox;
         private TextBox child_Age_textBox;
         private TextBox child_lastName_textBox;
         private TextBox child_name_textBox;
-        private ComboBox comboBox1;
-        private Label label3;
+        private TextBox child_sens_textBox;
     }
 }

@@ -46,7 +46,7 @@ namespace CursaBD
 
         private void registr_regist_button_Click(object sender, EventArgs e)
         {
-            using(TestBdContext bd = new TestBdContext())
+            using (TestBdContext bd = new TestBdContext())
             {
                 if (CorrectInput())
                 {
@@ -91,7 +91,7 @@ namespace CursaBD
                 return false;
 
             }
-            if(int.Parse(child_Age_textBox.Text) >= 18)
+            if (int.Parse(child_Age_textBox.Text) >= 18)
             {
                 MessageBox.Show("Некорректный возраст ребенка");
                 return false;
@@ -100,5 +100,5 @@ namespace CursaBD
         }
     }
 }
-    
+
 

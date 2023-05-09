@@ -12,7 +12,7 @@ namespace CursaBD
 {
     public partial class Choice : Form
     {
-        long id;
+        long CHILDID;
         string NAME;
         string LASTNAME;
         string AGE;
@@ -25,19 +25,21 @@ namespace CursaBD
         }
         public Choice(string name, string LastName, string age, string sex, string sens, long id, long childId)
         {
-            id = childId;
+            InitializeComponent();
+            
+
             using (TestBdContext db = new TestBdContext())
             {
                 var user = db.Children.ToList();
                 foreach (Child ch in user)
                 {
-                    if (ch.ChildrenId == id)
+                    if (ch.ParensId == id)
                     {
                         comboBox1.Items.Add(ch.Name);
                     }
                 }
             }
-            InitializeComponent();
+            CHILDID = childId;
             NAME = name;
             LASTNAME = LastName;
             AGE = age;
@@ -45,6 +47,7 @@ namespace CursaBD
             PARRENTSID = id;
             Sex = sex;
         }
+            
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -58,7 +61,7 @@ namespace CursaBD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EditChildren edit = new EditChildren(NAME,LASTNAME, AGE,Sex, SES, PARRENTSID, id);
+            EditChildren edit = new EditChildren(NAME,LASTNAME, AGE,Sex, SES, PARRENTSID, CHILDID);
             edit.Show();
             this.Close();
         }

@@ -89,9 +89,19 @@ namespace CursaBD
                             u.PhoneNumber = long.Parse(edit_phoneNumber_textBox.Text);
                             //db.Users.Update(u);
                             db.SaveChanges();
-                            Base enter = new Base(u.UserId);
-                            enter.Show();
-                            this.Close();
+                            if (u.UserType == 1)
+                            {
+                                Base enter = new Base(u.UserId);
+                                enter.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                BaseAdmin admin = new BaseAdmin(u.UserId);
+                                admin.Show();
+                                this.Close();
+                                
+                            }
                         }
                         else
                         {

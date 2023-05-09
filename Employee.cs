@@ -16,4 +16,6 @@ public partial class Employee
     public long Age { get; set; }
 
     public string? Exp { get; set; }
+
+    public string Group { get; set; }
 }

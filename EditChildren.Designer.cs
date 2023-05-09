@@ -43,7 +43,7 @@
             // 
             // edit_child_name_textBox
             // 
-            edit_child_name_textBox.Location = new Point(25, 143);
+            edit_child_name_textBox.Location = new Point(25, 62);
             edit_child_name_textBox.Name = "edit_child_name_textBox";
             edit_child_name_textBox.Size = new Size(210, 23);
             edit_child_name_textBox.TabIndex = 28;
@@ -51,7 +51,7 @@
             // 
             // edit_child_lastName_textBox
             // 
-            edit_child_lastName_textBox.Location = new Point(25, 62);
+            edit_child_lastName_textBox.Location = new Point(25, 143);
             edit_child_lastName_textBox.Name = "edit_child_lastName_textBox";
             edit_child_lastName_textBox.Size = new Size(210, 23);
             edit_child_lastName_textBox.TabIndex = 29;
