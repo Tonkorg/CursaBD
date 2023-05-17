@@ -13,6 +13,9 @@ namespace CursaBD
     public partial class BaseAdmin : Form
     {
         long CurrentId;
+        int[] sum = new int[16];
+        int[] count = new int[16];
+        double[] ave = new double[16];
         public BaseAdmin()
         {
             InitializeComponent();
@@ -71,15 +74,27 @@ namespace CursaBD
                 {
                     dataGridView2.Rows.Add(ch.Name, ch.Lastname, ch.Age, ch.Sex, ch.Sens, ch.Otr);
                     child.Add(ch.ChildrenId);
+                    count[ch.Otr - 1]++;
+                    sum[ch.Otr - 1] += (int)ch.Age;
+                    
                 }
-
+                for(int i = 0;i <sum.Length;i++)
+                {
+                    ave[i] = sum[i] / count[i];
+                }
                 var otr = db.Otrs.ToList();
+
+
                 foreach (Otr ot in otr)
                 {
+                    ot.AverageAge =(long)ave[ot.Number-1];
+                    ot.CountChild = count[ot.Number-1];
+
+                    
                     dataGridView1.Rows.Add(ot.Number, ot.AverageAge, ot.CountChild, ot.Voz);
-
+                    db.Update(ot);
                 }
-
+                db.SaveChanges();
             }
         }
 
@@ -181,5 +196,16 @@ namespace CursaBD
             v.Show();
             this.Visible = false;
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            using (TestBdContext db = new TestBdContext())
+            {
+                var otr = db.Otrs.ToList();
+
+            }
+
+        }
     }
-}
+ }
+

@@ -16,10 +16,6 @@ namespace CursaBD
         public ChoiceOtr()
         {
             InitializeComponent();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
             using (TestBdContext db = new TestBdContext())
             {
                 var otr = db.Otrs.ToList();
@@ -29,6 +25,10 @@ namespace CursaBD
                     comboBox1.Items.Add(o.Number);
                 }
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        { 
         }
 
         private void button1_Click(object sender, EventArgs e)
