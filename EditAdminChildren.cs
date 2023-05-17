@@ -12,9 +12,119 @@ namespace CursaBD
 {
     public partial class EditAdminChildren : Form
     {
+        long currentPArentsId;
+        long currentId;
         public EditAdminChildren()
         {
             InitializeComponent();
+        }
+        public EditAdminChildren(string name, string LastName, string sex, string age, string sens, long id, long childId)
+        {
+            InitializeComponent();
+            edit_child_age_textBox.Text = age;
+            edit_child_name_textBox.Text = name;
+            edit_child_lastName_textBox.Text = LastName;
+            edit_child_sens_textBox.Text = sens;
+
+            currentPArentsId = id;
+            currentId = childId;
+        }
+
+        private void registr_back_button_Click(object sender, EventArgs e)
+        {
+            BaseAdmin main = new BaseAdmin(currentPArentsId);
+            main.Show();
+            this.Close();
+        }
+
+        private void edit_child_age_textBox_TextChanged(object sender, EventArgs e)
+        {
+            edit_child_age_textBox.Clear();
+        }
+
+        private void edit_child_sens_textBox_TextChanged(object sender, EventArgs e)
+        {
+            edit_child_sens_textBox.Clear();
+        }
+
+        private void registr_clear_button_Click(object sender, EventArgs e)
+        {
+            edit_child_age_textBox.Clear();
+            edit_child_lastName_textBox.Clear();
+            edit_child_name_textBox.Clear();
+            edit_child_sens_textBox.Clear();
+            Otr_textBox.Clear();
+        }
+        private void registr_regist_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (TestBdContext db = new TestBdContext())
+                {
+                    var child = db.Children.ToList();
+
+                    foreach (Child ch in child)
+                    {
+                        if (ch.ChildrenId == currentId)
+                        {
+                            if (CorrectInput())
+                            {
+                                ch.Name = edit_child_name_textBox.Text;
+                                ch.Lastname = edit_child_lastName_textBox.Text;
+                                ch.Age = int.Parse(edit_child_age_textBox.Text);
+                                ch.Sens = edit_child_sens_textBox.Text;
+                                ch.Otr = int.Parse(Otr_textBox.Text);
+                                db.Children.Update(ch);
+                                db.SaveChanges();
+                                Base main = new Base(currentPArentsId);
+                                main.Show();
+                                this.Close();
+                            }
+                            else { MessageBox.Show("Неверно введены данные"); }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ee) { MessageBox.Show(ee.Message); }
+        }
+        public bool CorrectInput()
+        {
+            if (edit_child_age_textBox.Text == " " || int.Parse(edit_child_age_textBox.Text) >= 18 || int.Parse(edit_child_age_textBox.Text) < 0)
+            {
+                MessageBox.Show("Неверно указан возраст");
+                return false;
+            }
+            if (edit_child_lastName_textBox.Text == " ")
+            {
+                MessageBox.Show("Неверно указана фамилия");
+                return false;
+            }
+            if (edit_child_name_textBox.Text == " ")
+            {
+                MessageBox.Show("Неверно указано имя");
+                return false;
+            }
+            if (Otr_textBox.Text == " ")
+            {
+                MessageBox.Show("Неверно указан отряд");
+                return false;
+            }
+            else { return true; }
+        }
+
+        private void edit_child_lastName_textBox_TextChanged(object sender, EventArgs e)
+        {
+            edit_child_lastName_textBox.Clear();
+        }
+
+        private void edit_child_name_textBox_TextChanged(object sender, EventArgs e)
+        {
+            edit_child_name_textBox.Clear();
+        }
+        private void edit_child_otr_textBox_TextChanged(object sender, EventArgs e)
+        {
+            Otr_textBox.Clear();
         }
     }
 }

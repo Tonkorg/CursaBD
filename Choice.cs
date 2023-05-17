@@ -42,12 +42,14 @@ namespace CursaBD
                 var us = db.Users.ToList();
                 foreach (User u in us)
                 {
-                    if(u.UserId == PARRENTSID)
+                    if (u.UserType != 1)
                     {
-                        if(u.UserType != 1)
-                        {
-                            userTypeForAdmin = 2;
+                        userTypeForAdmin = 2;
+                        foreach (Child ch in user)
+                        {                 
+                               comboBox1.Items.Add(ch.Name);
                         }
+
                     }
                 }
             }

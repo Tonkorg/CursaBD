@@ -40,6 +40,7 @@ namespace CursaBD
             loadDataGrid();
         }
         List<long> emp = new List<long>();
+        List<long> child = new List<long>();
         private void Main_edit_button_Click(object sender, EventArgs e)
         {
             UserEdit userEdit = new UserEdit(CurrentId);
@@ -59,14 +60,25 @@ namespace CursaBD
             using (TestBdContext db = new TestBdContext())
             {
                 var user = db.Employees.ToList();
-
+                var chh = db.Children.ToList();
 
                 foreach (Employee ch in user)
                 {
                     CD.Rows.Add(ch.Name, ch.LastName, ch.Age, ch.PhoneNumber, ch.Group, ch.Exp);
                     emp.Add(ch.EmployeeId);
                 }
+                foreach (Child ch in chh)
+                {
+                    dataGridView2.Rows.Add(ch.Name, ch.Lastname, ch.Age, ch.Sex, ch.Sens, ch.Otr);
+                    child.Add(ch.ChildrenId);
+                }
 
+                var otr = db.Otrs.ToList();
+                foreach (Otr ot in otr)
+                {
+                    dataGridView1.Rows.Add(ot.Number, ot.AverageAge, ot.CountChild, ot.Voz);
+
+                }
 
             }
         }
@@ -80,7 +92,15 @@ namespace CursaBD
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int index = dataGridView2.CurrentRow.Index;
+            if (index == null)
+            {
+                index = 0;
+            }
 
+            EditAdminChildren edit = new EditAdminChildren(dataGridView2.Rows[index].Cells[0].Value.ToString(), dataGridView2.Rows[index].Cells[1].Value.ToString(), dataGridView2.Rows[index].Cells[2].Value.ToString(), dataGridView2.Rows[index].Cells[3].Value.ToString(), dataGridView2.Rows[index].Cells[4].Value.ToString(), CurrentId, emp[index]);
+            edit.Show();
+            this.Close();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -92,6 +112,16 @@ namespace CursaBD
 
         private void Main_edit_child_button_Click(object sender, EventArgs e)
         {
+            int index = CD.CurrentRow.Index;
+            if (index == null)
+            {
+                index = 0;
+            }
+
+            Choice choice = new Choice(CD.Rows[index].Cells[0].Value.ToString(), CD.Rows[index].Cells[1].Value.ToString(), CD.Rows[index].Cells[2].Value.ToString(), CD.Rows[index].Cells[3].Value.ToString(), CD.Rows[index].Cells[4].Value.ToString(), CurrentId, child[index]);
+            choice.Show();
+            this.Close();
+
         }
 
         private void CD_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -118,6 +148,38 @@ namespace CursaBD
             ChoiceEmp choice = new ChoiceEmp(CD.Rows[index].Cells[0].Value.ToString(), CD.Rows[index].Cells[1].Value.ToString(), CD.Rows[index].Cells[2].Value.ToString(), CD.Rows[index].Cells[3].Value.ToString(), CD.Rows[index].Cells[4].Value.ToString(), CD.Rows[index].Cells[5].Value.ToString(), CurrentId, emp[index]);
             choice.Show();
             this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (TestBdContext db = new TestBdContext())
+            {
+                //var user = db.Employees.ToList();
+                var chh = db.Children.ToList();
+                var otr = db.Otrs.ToList();
+                //foreach (Employee ch in user)
+                //{
+
+                //}
+                foreach (Child ch in chh)
+                {
+                    ch.Otr = 0;
+                }
+                foreach (Otr ot in otr)
+                {
+                    ot.CountChild = 0;
+                    ot.AverageAge = 0;
+                    ot.Voz = " ";
+                }
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ChoiceOtr v = new ChoiceOtr();
+            v.Show();
+            this.Visible = false;
         }
     }
 }

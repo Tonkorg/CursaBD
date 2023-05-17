@@ -47,8 +47,8 @@ public partial class TestBdContext : DbContext
         modelBuilder.Entity<Employee>(entity =>
         {
             entity.ToTable("Employee");
-
-            entity.Property(e => e.EmployeeId).ValueGeneratedNever();
+            entity.HasIndex(e => e.EmployeeId, "IX_Emploeyee_EmploeyeeId").IsUnique();
+            entity.HasKey(e => e.EmployeeId);
         });
 
         modelBuilder.Entity<Home>(entity =>

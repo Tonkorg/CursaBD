@@ -46,6 +46,7 @@
             Groups = new DataGridViewTextBoxColumn();
             Exp = new DataGridViewTextBoxColumn();
             tabPage3 = new TabPage();
+            button2 = new Button();
             dataGridView1 = new DataGridView();
             Number = new DataGridViewTextBoxColumn();
             AverageAge = new DataGridViewTextBoxColumn();
@@ -61,6 +62,7 @@
             SexS = new DataGridViewTextBoxColumn();
             SensS = new DataGridViewTextBoxColumn();
             Otr = new DataGridViewTextBoxColumn();
+            button4 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             create_emp_button.SuspendLayout();
@@ -233,6 +235,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(button2);
             tabPage3.Controls.Add(dataGridView1);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
@@ -242,11 +245,21 @@
             tabPage3.Text = "Информация о лагере";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            button2.Location = new Point(255, 368);
+            button2.Name = "button2";
+            button2.Size = new Size(165, 23);
+            button2.TabIndex = 8;
+            button2.Text = "Редактировать отряд";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Number, AverageAge, CountChild, Voz });
-            dataGridView1.Location = new Point(15, 6);
+            dataGridView1.Location = new Point(39, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(443, 298);
@@ -352,11 +365,22 @@
             Otr.HeaderText = "Отряд";
             Otr.Name = "Otr";
             // 
+            // button4
+            // 
+            button4.Location = new Point(786, 523);
+            button4.Name = "button4";
+            button4.Size = new Size(165, 23);
+            button4.TabIndex = 10;
+            button4.Text = "Закрыть смену";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // BaseAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(980, 558);
+            Controls.Add(button4);
             Controls.Add(monthCalendar1);
             Controls.Add(tabControl1);
             Name = "BaseAdmin";
@@ -393,11 +417,6 @@
         private DataGridViewTextBoxColumn PhoneNumber;
         private DataGridViewTextBoxColumn Groups;
         private DataGridViewTextBoxColumn Exp;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Number;
-        private DataGridViewTextBoxColumn AverageAge;
-        private DataGridViewTextBoxColumn CountChild;
-        private DataGridViewTextBoxColumn Voz;
         private TabPage tabPage2;
         private Button Main_edit_child_button;
         private Button button1;
@@ -408,5 +427,12 @@
         private DataGridViewTextBoxColumn SexS;
         private DataGridViewTextBoxColumn SensS;
         private DataGridViewTextBoxColumn Otr;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Number;
+        private DataGridViewTextBoxColumn AverageAge;
+        private DataGridViewTextBoxColumn CountChild;
+        private DataGridViewTextBoxColumn Voz;
+        private Button button2;
+        private Button button4;
     }
 }
