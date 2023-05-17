@@ -19,6 +19,7 @@ namespace CursaBD
         string SES;
         long PARRENTSID;
         string Sex;
+        int userTypeForAdmin = 1;
         public Choice()
         {
             InitializeComponent();
@@ -36,6 +37,17 @@ namespace CursaBD
                     if (ch.ParensId == id)
                     {
                         comboBox1.Items.Add(ch.Name);
+                    }
+                }
+                var us = db.Users.ToList();
+                foreach (User u in us)
+                {
+                    if(u.UserId == PARRENTSID)
+                    {
+                        if(u.UserType != 1)
+                        {
+                            userTypeForAdmin = 2;
+                        }
                     }
                 }
             }
@@ -61,9 +73,20 @@ namespace CursaBD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EditChildren edit = new EditChildren(NAME,LASTNAME, AGE,Sex, SES, PARRENTSID, CHILDID);
-            edit.Show();
-            this.Close();
+            if (userTypeForAdmin == 1)
+            {
+                EditChildren edit = new EditChildren(NAME, LASTNAME, AGE, Sex, SES, PARRENTSID, CHILDID);
+                edit.Show();
+                this.Close();
+            }
+            else
+            {
+                {
+                    EditAdminChildren edit = new EditAdminChildren(NAME, LASTNAME, AGE, Sex, SES, PARRENTSID, CHILDID);
+                    edit.Show();
+                    this.Close();
+                }
+            }
         }
     }
 }

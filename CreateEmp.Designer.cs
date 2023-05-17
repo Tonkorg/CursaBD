@@ -96,9 +96,9 @@
             label3.AutoSize = true;
             label3.Location = new Point(108, 163);
             label3.Name = "label3";
-            label3.Size = new Size(96, 15);
+            label3.Size = new Size(95, 15);
             label3.TabIndex = 23;
-            label3.Text = "Введите восраст";
+            label3.Text = "Введите возраст";
             // 
             // label4
             // 

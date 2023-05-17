@@ -105,9 +105,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(69, 176);
             label2.Name = "label2";
-            label2.Size = new Size(96, 15);
+            label2.Size = new Size(95, 15);
             label2.TabIndex = 23;
-            label2.Text = "Введите восраст";
+            label2.Text = "Введите возраст";
             // 
             // label1
             // 

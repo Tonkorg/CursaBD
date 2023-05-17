@@ -59,22 +59,22 @@ namespace CursaBD
 
         private void registr_back_button_Click(object sender, EventArgs e)
         {
-            if(!isAdmin())
-            { 
-            Base main = new Base(parentsId);
-                                main.Show();
-                                this.Close();
+            if (!isAdmin())
+            {
+                Base main = new Base(parentsId);
+                main.Show();
+                this.Close();
             }
             else
             {
-            BaseAdmin main = new BaseAdmin(parentsId);
-                        main.Show();
-                        this.Close();
+                BaseAdmin main = new BaseAdmin(parentsId);
+                main.Show();
+                this.Close();
             }
         }
-            
-              
-        
+
+
+
 
 
         private void registr_clear_button_Click(object sender, EventArgs e)
@@ -125,7 +125,7 @@ namespace CursaBD
                         main.Show();
                         this.Close();
                     }
-                    
+
                 }
             }
         }

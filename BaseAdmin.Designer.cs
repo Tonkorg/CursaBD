@@ -166,6 +166,7 @@
             edit_emp_button.TabIndex = 8;
             edit_emp_button.Text = "Редактировать";
             edit_emp_button.UseVisualStyleBackColor = true;
+            edit_emp_button.Click += edit_emp_button_Click;
             // 
             // create_child_button
             // 

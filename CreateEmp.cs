@@ -53,7 +53,7 @@ namespace CursaBD
                         Name = create_emp_name_textBox.Text,
                         LastName = create_emp_Lastname_textBox.Text,
                         Age = int.Parse(create_emp_age_textBox.Text),
-                        PhoneNumber = int.Parse(create_emp_phoneNumber_textBox.Text),
+                        PhoneNumber = long.Parse(create_emp_phoneNumber_textBox.Text),
                         Exp = create_emp_exp_textBox.Text,
                         Group = create_emp_spo_textBox.Text
                     };
@@ -93,13 +93,13 @@ namespace CursaBD
                 MessageBox.Show("");
                 return false;
             }
-                if (create_emp_spo_textBox.Text == " ")
-                {
-                    MessageBox.Show("Некоректно указан отряд");
-                    create_emp_spo_textBox.Clear();
-                    return false;
-                }
-                else { return true; }
+            if (create_emp_spo_textBox.Text == " ")
+            {
+                MessageBox.Show("Некоректно указан отряд");
+                create_emp_spo_textBox.Clear();
+                return false;
+            }
+            else { return true; }
         }
     }
 

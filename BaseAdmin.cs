@@ -101,9 +101,22 @@ namespace CursaBD
             {
                 index = 0;
             }
-            
-            EditEmp edit  = new EditEmp(CD.Rows[index].Cells[0].Value.ToString(), CD.Rows[index].Cells[1].Value.ToString(), CD.Rows[index].Cells[2].Value.ToString(), CD.Rows[index].Cells[3].Value.ToString(), CD.Rows[index].Cells[4].Value.ToString(), CD.Rows[index].Cells[5].Value.ToString(),CurrentId, emp[index]);
+
+            EditEmp edit = new EditEmp(CD.Rows[index].Cells[0].Value.ToString(), CD.Rows[index].Cells[1].Value.ToString(), CD.Rows[index].Cells[2].Value.ToString(), CD.Rows[index].Cells[3].Value.ToString(), CD.Rows[index].Cells[4].Value.ToString(), CD.Rows[index].Cells[5].Value.ToString(), CurrentId, emp[index]);
             edit.Show();
+            this.Close();
+        }
+
+        private void edit_emp_button_Click(object sender, EventArgs e)
+        {
+            int index = CD.CurrentRow.Index;
+            if (index == null)
+            {
+                index = 0;
+            }
+
+            ChoiceEmp choice = new ChoiceEmp(CD.Rows[index].Cells[0].Value.ToString(), CD.Rows[index].Cells[1].Value.ToString(), CD.Rows[index].Cells[2].Value.ToString(), CD.Rows[index].Cells[3].Value.ToString(), CD.Rows[index].Cells[4].Value.ToString(), CD.Rows[index].Cells[5].Value.ToString(), CurrentId, emp[index]);
+            choice.Show();
             this.Close();
         }
     }
