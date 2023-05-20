@@ -63,6 +63,14 @@
             SensS = new DataGridViewTextBoxColumn();
             Otr = new DataGridViewTextBoxColumn();
             button4 = new Button();
+            tabPage4 = new TabPage();
+            dataGridView3 = new DataGridView();
+            ParrentsName = new DataGridViewTextBoxColumn();
+            ParrentsLastName = new DataGridViewTextBoxColumn();
+            ChildName = new DataGridViewTextBoxColumn();
+            ChildLastName = new DataGridViewTextBoxColumn();
+            CholdAge = new DataGridViewTextBoxColumn();
+            Seas = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             create_emp_button.SuspendLayout();
@@ -71,6 +79,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
             // 
             // monthCalendar1
@@ -85,6 +95,7 @@
             tabControl1.Controls.Add(create_emp_button);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage4);
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -376,6 +387,57 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(dataGridView3);
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(779, 423);
+            tabPage4.TabIndex = 4;
+            tabPage4.Text = "Информация о заявках";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { ParrentsName, ParrentsLastName, ChildName, ChildLastName, CholdAge, Seas });
+            dataGridView3.Location = new Point(116, 22);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.RowTemplate.Height = 25;
+            dataGridView3.Size = new Size(643, 298);
+            dataGridView3.TabIndex = 10;
+            // 
+            // ParrentsName
+            // 
+            ParrentsName.HeaderText = "Имя Родителя";
+            ParrentsName.Name = "ParrentsName";
+            // 
+            // ParrentsLastName
+            // 
+            ParrentsLastName.HeaderText = "Фамилия родителя";
+            ParrentsLastName.Name = "ParrentsLastName";
+            // 
+            // ChildName
+            // 
+            ChildName.HeaderText = "Имя ребенка";
+            ChildName.Name = "ChildName";
+            // 
+            // ChildLastName
+            // 
+            ChildLastName.HeaderText = "Фамилия ребенка";
+            ChildLastName.Name = "ChildLastName";
+            // 
+            // CholdAge
+            // 
+            CholdAge.HeaderText = "Возраст";
+            CholdAge.Name = "CholdAge";
+            // 
+            // Seas
+            // 
+            Seas.HeaderText = "Смена";
+            Seas.Name = "Seas";
+            // 
             // BaseAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -385,7 +447,7 @@
             Controls.Add(monthCalendar1);
             Controls.Add(tabControl1);
             Name = "BaseAdmin";
-            Text = "BaseAdmin";
+            Text = "Основная страница";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -395,6 +457,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ResumeLayout(false);
         }
 
@@ -435,5 +499,13 @@
         private DataGridViewTextBoxColumn Voz;
         private Button button2;
         private Button button4;
+        private TabPage tabPage4;
+        private DataGridView dataGridView3;
+        private DataGridViewTextBoxColumn ParrentsName;
+        private DataGridViewTextBoxColumn ParrentsLastName;
+        private DataGridViewTextBoxColumn ChildName;
+        private DataGridViewTextBoxColumn ChildLastName;
+        private DataGridViewTextBoxColumn CholdAge;
+        private DataGridViewTextBoxColumn Seas;
     }
 }

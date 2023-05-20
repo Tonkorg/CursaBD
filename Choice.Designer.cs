@@ -45,11 +45,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(2, 29);
+            label1.Location = new Point(85, 34);
             label1.Name = "label1";
-            label1.Size = new Size(315, 15);
+            label1.Size = new Size(109, 15);
             label1.TabIndex = 1;
-            label1.Text = "Выберите данные какого ребенка хотите редактировать";
+            label1.Text = "Выберите ребенка";
             label1.Click += label1_Click;
             // 
             // button1

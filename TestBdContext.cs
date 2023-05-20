@@ -27,6 +27,8 @@ public partial class TestBdContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<Require> Requirements { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlite("Data Source=F:\\\\\\\\TestBd.db");
@@ -49,6 +51,13 @@ public partial class TestBdContext : DbContext
             entity.ToTable("Employee");
             entity.HasIndex(e => e.EmployeeId, "IX_Emploeyee_EmploeyeeId").IsUnique();
             entity.HasKey(e => e.EmployeeId);
+        });
+
+        modelBuilder.Entity<Require>(entity =>
+        {
+            entity.ToTable("Require");
+            entity.HasKey(e => e.RequireID);
+            entity.HasIndex(e => e.RequireID, "IX_Require_requireId").IsUnique();
         });
 
         modelBuilder.Entity<Home>(entity =>

@@ -39,14 +39,14 @@
             Main_edit_child_button = new Button();
             create_child_button = new Button();
             CD = new DataGridView();
-            tabPage3 = new TabPage();
-            childBindingSource = new BindingSource(components);
-            monthCalendar1 = new MonthCalendar();
             NameS = new DataGridViewTextBoxColumn();
             LastNameS = new DataGridViewTextBoxColumn();
             AgeS = new DataGridViewTextBoxColumn();
             SexS = new DataGridViewTextBoxColumn();
             SensS = new DataGridViewTextBoxColumn();
+            childBindingSource = new BindingSource(components);
+            monthCalendar1 = new MonthCalendar();
+            button1 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -58,7 +58,6 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Controls.Add(tabPage3);
             tabControl1.Location = new Point(2, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -165,27 +164,6 @@
             CD.TabIndex = 6;
             CD.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // tabPage3
-            // 
-            tabPage3.Location = new Point(4, 24);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(779, 423);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Информация о лагере";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // childBindingSource
-            // 
-            childBindingSource.DataSource = typeof(Child);
-            // 
-            // monthCalendar1
-            // 
-            monthCalendar1.Location = new Point(791, 2);
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 4;
-            monthCalendar1.DateChanged += monthCalendar1_DateChanged;
-            // 
             // NameS
             // 
             NameS.HeaderText = "Имя";
@@ -217,15 +195,37 @@
             SensS.Name = "SensS";
             SensS.ReadOnly = true;
             // 
+            // childBindingSource
+            // 
+            childBindingSource.DataSource = typeof(Child);
+            // 
+            // monthCalendar1
+            // 
+            monthCalendar1.Location = new Point(791, 2);
+            monthCalendar1.Name = "monthCalendar1";
+            monthCalendar1.TabIndex = 4;
+            monthCalendar1.DateChanged += monthCalendar1_DateChanged;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(694, 501);
+            button1.Name = "button1";
+            button1.Size = new Size(143, 23);
+            button1.TabIndex = 5;
+            button1.Text = "Заказать путевку";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
             // Base
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(962, 563);
+            Controls.Add(button1);
             Controls.Add(monthCalendar1);
             Controls.Add(tabControl1);
             Name = "Base";
-            Text = "Main";
+            Text = "Основная страница";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -243,7 +243,6 @@
         private Label main_LastName;
         private Label Main_name;
         private TabPage tabPage2;
-        private TabPage tabPage3;
         private MonthCalendar monthCalendar1;
         private Button Main_edit_button;
         private Label label2;
@@ -263,5 +262,6 @@
         private DataGridViewTextBoxColumn AgeS;
         private DataGridViewTextBoxColumn SexS;
         private DataGridViewTextBoxColumn SensS;
+        private Button button1;
     }
 }

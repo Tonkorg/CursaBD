@@ -108,5 +108,12 @@ namespace CursaBD
             this.Close();
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ChiceSeason ch = new ChiceSeason(CurrentId);
+            ch.Show();
+            this.Visible = false;
+        }
     }
 }

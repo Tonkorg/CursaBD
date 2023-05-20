@@ -27,27 +27,31 @@ namespace CursaBD
         public Choice(string name, string LastName, string age, string sex, string sens, long id, long childId)
         {
             InitializeComponent();
-            
+
 
             using (TestBdContext db = new TestBdContext())
             {
-                var user = db.Children.ToList();
-                foreach (Child ch in user)
-                {
-                    if (ch.ParensId == id)
-                    {
-                        comboBox1.Items.Add(ch.Name);
-                    }
-                }
+               
                 var us = db.Users.ToList();
                 foreach (User u in us)
                 {
-                    if (u.UserType != 1)
+                    if (u.UserType == 1)
                     {
-                        userTypeForAdmin = 2;
+                        var user = db.Children.ToList();
                         foreach (Child ch in user)
-                        {                 
-                               comboBox1.Items.Add(ch.Name);
+                        {
+                            if (ch.ParensId == id)
+                            {
+                                comboBox1.Items.Add(ch.Name);
+                            }
+                        }
+                    }
+                    else { 
+                        userTypeForAdmin = 2;
+                        var user = db.Children.ToList();
+                        foreach (Child ch in user)
+                        {
+                            comboBox1.Items.Add(ch.Name);
                         }
 
                     }
@@ -61,7 +65,7 @@ namespace CursaBD
             PARRENTSID = id;
             Sex = sex;
         }
-            
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -13,9 +13,9 @@ namespace CursaBD
     public partial class BaseAdmin : Form
     {
         long CurrentId;
-        int[] sum = new int[16];
-        int[] count = new int[16];
-        double[] ave = new double[16];
+        int[] sum = new int[17];
+        int[] count = new int[17];
+        double[] ave = new double[17];
         public BaseAdmin()
         {
             InitializeComponent();
@@ -64,6 +64,8 @@ namespace CursaBD
             {
                 var user = db.Employees.ToList();
                 var chh = db.Children.ToList();
+                var req = db.Requirements.ToList();
+                var userM = db.Users.ToList();
 
                 foreach (Employee ch in user)
                 {
@@ -74,26 +76,52 @@ namespace CursaBD
                 {
                     dataGridView2.Rows.Add(ch.Name, ch.Lastname, ch.Age, ch.Sex, ch.Sens, ch.Otr);
                     child.Add(ch.ChildrenId);
-                    count[ch.Otr - 1]++;
-                    sum[ch.Otr - 1] += (int)ch.Age;
-                    
+                    if (ch.Otr != 0)
+                    {
+                        count[ch.Otr - 1]++;
+                        sum[ch.Otr - 1] += (int)ch.Age;
+                    }
+
                 }
-                for(int i = 0;i <sum.Length;i++)
+                for (int i = 0; i < sum.Length; i++)
                 {
-                    ave[i] = sum[i] / count[i];
+                    if (count[i] != 0)
+                    {
+                        ave[i] = sum[i] / count[i];
+                    }
+
                 }
                 var otr = db.Otrs.ToList();
 
 
                 foreach (Otr ot in otr)
                 {
-                    ot.AverageAge =(long)ave[ot.Number-1];
-                    ot.CountChild = count[ot.Number-1];
+                    ot.AverageAge = (long)ave[ot.Number - 1];
+                    ot.CountChild = count[ot.Number - 1];
 
-                    
+
                     dataGridView1.Rows.Add(ot.Number, ot.AverageAge, ot.CountChild, ot.Voz);
                     db.Update(ot);
                 }
+                foreach(Require require in req)
+                {
+                    foreach (Child ch in chh) 
+                    {
+                        if(require.ChildId.Equals(ch.ChildrenId))
+                        {
+                            foreach(User use in userM)
+                            {
+                                if(use.UserId.Equals(ch.ParensId))
+                                {
+                                    dataGridView3.Rows.Add(use.Name, use.LastName, ch.Name, ch.Lastname, ch.Age, require.Season);
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+               
                 db.SaveChanges();
             }
         }
@@ -207,5 +235,5 @@ namespace CursaBD
 
         }
     }
- }
+}
 
