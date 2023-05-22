@@ -103,15 +103,15 @@ namespace CursaBD
                     dataGridView1.Rows.Add(ot.Number, ot.AverageAge, ot.CountChild, ot.Voz);
                     db.Update(ot);
                 }
-                foreach(Require require in req)
+                foreach (Require require in req)
                 {
-                    foreach (Child ch in chh) 
+                    foreach (Child ch in chh)
                     {
-                        if(require.ChildId.Equals(ch.ChildrenId))
+                        if (require.ChildId.Equals(ch.ChildrenId))
                         {
-                            foreach(User use in userM)
+                            foreach (User use in userM)
                             {
-                                if(use.UserId.Equals(ch.ParensId))
+                                if (use.UserId.Equals(ch.ParensId))
                                 {
                                     dataGridView3.Rows.Add(use.Name, use.LastName, ch.Name, ch.Lastname, ch.Age, require.Season);
                                 }
@@ -121,7 +121,7 @@ namespace CursaBD
                     }
                 }
 
-               
+
                 db.SaveChanges();
             }
         }
@@ -233,6 +233,19 @@ namespace CursaBD
 
             }
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using(TestBdContext test = new TestBdContext())
+            {
+                var req = test.Requirements.ToList();
+                foreach(Require rr in req)
+                {
+                    test.Remove(rr);
+                }
+                test.SaveChanges();
+            }
         }
     }
 }

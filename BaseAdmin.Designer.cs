@@ -62,7 +62,6 @@
             SexS = new DataGridViewTextBoxColumn();
             SensS = new DataGridViewTextBoxColumn();
             Otr = new DataGridViewTextBoxColumn();
-            button4 = new Button();
             tabPage4 = new TabPage();
             dataGridView3 = new DataGridView();
             ParrentsName = new DataGridViewTextBoxColumn();
@@ -71,6 +70,8 @@
             ChildLastName = new DataGridViewTextBoxColumn();
             CholdAge = new DataGridViewTextBoxColumn();
             Seas = new DataGridViewTextBoxColumn();
+            button4 = new Button();
+            button3 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             create_emp_button.SuspendLayout();
@@ -377,16 +378,6 @@
             Otr.HeaderText = "Отряд";
             Otr.Name = "Otr";
             // 
-            // button4
-            // 
-            button4.Location = new Point(786, 523);
-            button4.Name = "button4";
-            button4.Size = new Size(165, 23);
-            button4.TabIndex = 10;
-            button4.Text = "Закрыть смену";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
-            // 
             // tabPage4
             // 
             tabPage4.Controls.Add(dataGridView3);
@@ -438,11 +429,32 @@
             Seas.HeaderText = "Смена";
             Seas.Name = "Seas";
             // 
+            // button4
+            // 
+            button4.Location = new Point(786, 523);
+            button4.Name = "button4";
+            button4.Size = new Size(165, 23);
+            button4.TabIndex = 10;
+            button4.Text = "Закрыть смену";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(610, 523);
+            button3.Name = "button3";
+            button3.Size = new Size(135, 23);
+            button3.TabIndex = 11;
+            button3.Text = "Удалить заявки";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // BaseAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(980, 558);
+            Controls.Add(button3);
             Controls.Add(button4);
             Controls.Add(monthCalendar1);
             Controls.Add(tabControl1);
@@ -507,5 +519,6 @@
         private DataGridViewTextBoxColumn ChildLastName;
         private DataGridViewTextBoxColumn CholdAge;
         private DataGridViewTextBoxColumn Seas;
+        private Button button3;
     }
 }
